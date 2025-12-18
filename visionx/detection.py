@@ -1,22 +1,57 @@
 """
 YOLOv3-tiny detection wrapper.
-API: detect(frame) -> list[{"label": str, "conf": float, "box": [x,y,w,h]}]
+
+If YOLO files are missing (common on dev machines),
+the module falls back to a no-op detector so the rest
+of the system can be tested.
 """
 
+from pathlib import Path
 import cv2
 import numpy as np
-from .config import YOLO_CFG, YOLO_WEIGHTS, YOLO_NAMES, CAMERA_SIZE, CONF_THR, NMS_THR
 
-with open(YOLO_NAMES, "r") as f:
-    LABELS = [l.strip() for l in f if l.strip()]
+from .config import (
+    YOLO_CFG, YOLO_WEIGHTS, YOLO_NAMES,
+    CAMERA_SIZE, CONF_THR, NMS_THR
+)
 
-net = cv2.dnn.readNetFromDarknet(YOLO_CFG, YOLO_WEIGHTS)
-ln = net.getLayerNames()
-ln = [ln[i - 1] for i in net.getUnconnectedOutLayers().flatten()]
+# -------- Check model availability --------
+_yolo_ready = True
+for p in (YOLO_CFG, YOLO_WEIGHTS, YOLO_NAMES):
+    if not Path(p).exists():
+        _yolo_ready = False
+        break
+
+if not _yolo_ready:
+    print("[detection] YOLO files not found — running in mock mode")
+
+# -------- Load YOLO only if available --------
+LABELS = []
+net = None
+ln = None
+
+if _yolo_ready:
+    with open(YOLO_NAMES, "r") as f:
+        LABELS = [l.strip() for l in f if l.strip()]
+
+    net = cv2.dnn.readNetFromDarknet(YOLO_CFG, YOLO_WEIGHTS)
+    ln = net.getLayerNames()
+    ln = [ln[i - 1] for i in net.getUnconnectedOutLayers().flatten()]
+
 
 def detect(frame):
+    """
+    Run YOLO detection on a frame.
+    Returns list of {label, conf, box}.
+    In mock mode, always returns [].
+    """
+    if not _yolo_ready:
+        return []
+
     (H, W) = frame.shape[:2]
-    blob = cv2.dnn.blobFromImage(frame, 1/255.0, CAMERA_SIZE, swapRB=True, crop=False)
+    blob = cv2.dnn.blobFromImage(
+        frame, 1 / 255.0, CAMERA_SIZE, swapRB=True, crop=False
+    )
     net.setInput(blob)
     outputs = net.forward(ln)
 
@@ -46,4 +81,5 @@ def detect(frame):
                 "conf": confidences[i],
                 "box": boxes[i]
             })
+
     return results

@@ -1,0 +1,16 @@
+[Unit]
+Description=VisionX Assistive System
+After=network.target
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/visionx-assistive-system
+ExecStart=/home/pi/visionx-assistive-system/.venv/bin/python3 -m visionx.visionx_main
+Restart=on-failure
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target

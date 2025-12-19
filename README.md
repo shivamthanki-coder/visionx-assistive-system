@@ -138,10 +138,22 @@ FUTURE IMPROVEMENTS
 - Field testing with quantitative metrics
 
 --------------------------------------------------------------------------------
+CONTRIBUTION
+--------------------------------------------------------------------------------
+## Contributors
+
+- **Zalak Thakkar** — Sensor integration support, validation, and Code generation.
+- **Darshan Tita** — Code logic generation, algorithm review, and implementation support
+  
+--------------------------------------------------------------------------------
 AUTHOR
 --------------------------------------------------------------------------------
 
 Shivam Thanki  
-Computer Science | Embedded Systems | Edge AI  
+ICT Engineer | Embedded Systems | Edge AI  
+
+## LICENSE
+
+MIT License
 
 GitHub: https://github.com/shivamthanki-coder

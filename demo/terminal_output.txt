@@ -3,23 +3,49 @@ $ python3 -m visionx.visionx_main --mock-serial
 [15:06:45] det=None dist=None gps=23.186433,72.628515 sats=6
 [15:06:45] skip frame dist=None gps=23.186433,72.628515 sats=6
 
-[15:06:46] det=person dist=2.40 gps=23.186433,72.628515 sats=6
-[TTS] Person ahead, 2.4 meters
+[15:06:46] det=None dist=2.45 gps=23.186433,72.628515 sats=6
+[15:06:46] skip frame dist=2.45 gps=23.186433,72.628515 sats=6
 
-[15:06:47] det=person dist=2.10 gps=23.186433,72.628515 sats=6
-[15:06:47] skip frame dist=2.10 gps=23.186433,72.628515 sats=6
+[15:06:47] det=person dist=2.30 gps=23.186433,72.628515 sats=6
+[TTS] Person ahead, 2.3 meters
 
-[15:06:48] det=person dist=1.80 gps=23.186431,72.628513 sats=6
-[TTS] Person ahead, 1.8 meters
+[15:06:48] det=person dist=2.10 gps=23.186433,72.628515 sats=6
+[15:06:48] skip frame dist=2.10 gps=23.186433,72.628515 sats=6
 
-[15:06:49] det=person dist=1.40 gps=23.186431,72.628513 sats=6
-[15:06:49] skip frame dist=1.40 gps=23.186431,72.628513 sats=6
+[15:06:49] det=person dist=1.90 gps=23.186431,72.628513 sats=6
+[TTS] Person ahead, 1.9 meters
 
-[15:06:50] det=person dist=1.10 gps=23.186416,72.628519 sats=6
-[TTS] Person ahead, 1 meter
+[15:06:50] det=person dist=1.70 gps=23.186431,72.628513 sats=6
+[15:06:50] skip frame dist=1.70 gps=23.186431,72.628513 sats=6
 
-[15:06:51] det=person dist=0.80 gps=23.186416,72.628519 sats=6
+[15:06:51] det=person dist=1.50 gps=23.186431,72.628513 sats=6
+[TTS] Person ahead, 1.5 meters
+
+[15:06:52] det=person dist=1.30 gps=23.186416,72.628519 sats=6
+[15:06:52] skip frame dist=1.30 gps=23.186416,72.628519 sats=6
+
+[15:06:53] det=person dist=1.10 gps=23.186416,72.628519 sats=6
+[TTS] Person ahead, 1.1 meters
+
+[15:06:54] det=person dist=0.95 gps=23.186416,72.628519 sats=6
+[15:06:54] skip frame dist=0.95 gps=23.186416,72.628519 sats=6
+
+[15:06:55] det=person dist=0.80 gps=23.186416,72.628519 sats=6
 [TTS] Person very close
 
-[15:06:52] det=None dist=None gps=23.186416,72.628519 sats=6
-[15:06:52] system idle
+[15:06:56] det=person dist=0.75 gps=23.186416,72.628519 sats=6
+[15:06:56] debounce active (no repeat alert)
+
+[15:06:57] det=person dist=0.90 gps=23.186416,72.628519 sats=6
+[15:06:57] skip frame dist=0.90 gps=23.186416,72.628519 sats=6
+
+[15:06:58] det=None dist=None gps=23.186416,72.628519 sats=6
+[15:06:58] system idle
+
+[15:06:59] det=None dist=None gps=23.186416,72.628519 sats=6
+[15:06:59] system idle
+
+[15:07:00] shutdown requested
+[15:07:00] flushing TTS queue
+[15:07:00] VisionX stopped cleanly
+

@@ -1,0 +1,5 @@
+{"ts":"2025-12-19T07:20:01.123Z","type":"system","msg":"startup","camera":{"resolution":"320x320","config":"BGR888"}}
+{"ts":"2025-12-19T07:20:02.456Z","type":"sensor","src":"esp32","d1_cm":120,"d2_cm":118,"sats":0}
+{"ts":"2025-12-19T07:20:03.789Z","type":"detection","class":"person","conf":0.87,"bbox":[120,50,60,160],"distance_m":1.8}
+{"ts":"2025-12-19T07:20:03.790Z","type":"tts","text":"Person ahead 2 meters","prio":10}
+{"ts":"2025-12-19T07:20:04.000Z","type":"log","level":"info","msg":"event_written","path":"~/visionx_out/events.jsonl"}

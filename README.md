@@ -19,7 +19,7 @@ KEY FEATURES
 --------------------------------------------------------------------------------
 SYSTEM ARCHITECTURE (HIGH LEVEL)
 --------------------------------------------------------------------------------
-
+<pre>
 ESP32 (Ultrasonic + GPS)
         |
         |  JSON over Serial (USB)
@@ -32,36 +32,39 @@ Raspberry Pi (VisionX Core)
         |
         v
 Bluetooth Earbuds (Audio Feedback)
-
+</pre>
 --------------------------------------------------------------------------------
 REPOSITORY STRUCTURE
 --------------------------------------------------------------------------------
 
+<pre>
 visionx-assistive-system/
-├── visionx/                 # Core application package
-│   ├── visionx_main.py      # Main orchestrator
-│   ├── detection.py         # YOLO detection (auto-mock if unavailable)
-│   ├── json_thread.py       # ESP32 serial ingestion
-│   ├── tts_queue.py         # Priority + dedupe TTS engine
-│   ├── config.py            # Central configuration
-│   └── utils.py             # Shared helpers
+├── visionx/
+│   ├── visionx_main.py
+│   ├── detection.py
+│   ├── json_thread.py
+│   ├── tts_queue.py
+│   ├── config.py
+│   └── utils.py
 │
-├── scripts/                 # Dev & testing utilities
+├── scripts/
 │   ├── simulate_esp32.py
 │   ├── measure_latency.py
 │   └── test_tts_queue.py
 │
-├── systemd/                 # Deployment
+├── systemd/
 │   └── visionx.service
 │
-├── docs/                    # Technical documentation
+├── docs/
 │   ├── ARCHITECTURE.md
 │   ├── ALERT_LOGIC.md
 │   └── TEST_PLAN.md
 │
-├── logs/                    # Sample logs
-├── metrics/                 # Performance summaries
+├── logs/
+├── metrics/
 └── README.md
+</pre>
+
 
 --------------------------------------------------------------------------------
 HOW IT WORKS

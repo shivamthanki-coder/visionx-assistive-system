@@ -181,6 +181,16 @@ This project demonstrates applied skills in:
 - Software architecture
 - Production-quality Python
 
+### Model choice 
+
+We selected YOLOv3-tiny initially for compatibility with our lightweight OpenCV/DNN pipeline and for ease of deployment on Raspberry Pi hardware during early prototyping.
+
+Planned model upgrades:
+- Evaluate YOLOv8-nano / YOLOv10 variants and a custom tiny retrain for our target classes.
+- Apply INT8 quantization (TensorRT/ONNX Runtime or TFLite) for production builds.
+
+Benchmarks pending: inference throughput depends on platform (Pi model, thermal state, and whether model is quantized). The demo above demonstrates a responsive end-to-end loop; we will publish exact FPS/latency measurements and quantized model results in the `benchmarks/` folder after lab testing on target Pi hardware.
+
 --------------------------------------------------------------------------------
 FUTURE IMPROVEMENTS
 --------------------------------------------------------------------------------

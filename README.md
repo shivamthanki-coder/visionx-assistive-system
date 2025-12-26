@@ -4,6 +4,9 @@
 
 **Why it matters:** The system combines YOLO-based object detection, ultrasonic distance sensing, and a prioritized text-to-speech (TTS) pipeline, engineered to run headlessly on a Raspberry Pi with an ESP32 acting as a sensor reflex unit.
 
+**Status:** functional prototype — maintained, tested in real hardware.
+
+
 ## Demo
 
 ![VisionX demo](/demo/demo.gif)

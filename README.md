@@ -40,6 +40,15 @@ Run the simulator (no hardware required):
 ```bash
 python3 scripts/simulate_esp32.py | python3 -m visionx.visionx_main --mock-serial
 ```
+> **Note (non-Raspberry Pi systems):**
+> - `picamera2` is only available on Raspberry Pi OS.
+> - On macOS/Linux, VisionX runs in **mock mode**:
+>   - camera input is disabled
+>   - YOLO inference may be skipped if model files are not present
+>   - logs are printed to stdout for verification
+Persistent event logs (`events.jsonl`) are generated during active detections or when running on Raspberry Pi hardware.
+
+
 ### Output (sample)
 ```bash
 

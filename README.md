@@ -1,9 +1,42 @@
 # VisionX — Wearable Assistive Vision System
 
-VisionX is a modular, real-time assistive system designed to help visually impaired users perceive nearby obstacles using computer vision, proximity sensing, and audio feedback.
+**One-line:** Edge-ready wearable that fuses camera + ultrasonic sensing to issue prioritized spoken alerts to visually impaired users.
 
-The system combines YOLO-based object detection, ultrasonic distance sensing, and a prioritized text-to-speech (TTS) pipeline, engineered to run headlessly on a Raspberry Pi with an ESP32 acting as a sensor reflex unit.
+**Why it matters:** The system combines YOLO-based object detection, ultrasonic distance sensing, and a prioritized text-to-speech (TTS) pipeline, engineered to run headlessly on a Raspberry Pi with an ESP32 acting as a sensor reflex unit.
 
+## RUNNING WITHOUT HARDWARE (DEV MODE)
+
+### Quickstart (dev – no hardware)
+
+Follow these exact commands to run a simulated demo in a fresh environment.
+
+```bash
+# clone repository
+git clone https://github.com/shivamthanki-coder/visionx-assistive-system.git
+cd visionx-assistive-system
+
+# create & activate virtualenv
+python3 -m venv .venv
+source .venv/bin/activate
+
+# upgrade pip and install python dependencies
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+### Dev-mode: simulate ESP32 serial → pipe into VisionX main
+
+Run the simulator (no hardware required):
+
+```bash
+python3 scripts/simulate_esp32.py | python3 -m visionx.visionx_main --mock-serial
+```
+### Output (sample)
+```bash
+
+Events are written to the output folder:
+tail -n 5 ~/visionx_out/events.jsonl
+
+``` 
 --------------------------------------------------------------------------------
 KEY FEATURES
 --------------------------------------------------------------------------------
@@ -80,23 +113,7 @@ HOW IT WORKS
 8. Events are logged as structured JSON for later analysis.
 
 --------------------------------------------------------------------------------
-RUNNING WITHOUT HARDWARE (DEV MODE)
---------------------------------------------------------------------------------
-
-Command:
-
-python3 scripts/simulate_esp32.py | python3 -m visionx.visionx_main --mock-serial
-
-Notes:
-- Detection auto-disables if YOLO files are missing
-- Full alert, TTS, and logging pipeline remains active
-
-Logs are written to:
-
-~/visionx_out/events.jsonl
-
---------------------------------------------------------------------------------
-RASPBERRY PI DEPLOYMENT (SUMMARY)
+RASBERRYPIE PI DEPLOYMENT (PRODUCTION)
 --------------------------------------------------------------------------------
 
 1. Install dependencies: OpenCV, Picamera2, espeak-ng
@@ -104,9 +121,18 @@ RASPBERRY PI DEPLOYMENT (SUMMARY)
 3. Pair Bluetooth earbuds
 4. Enable systemd service:
 
-sudo cp systemd/visionx.service /etc/systemd/system/
-sudo systemctl enable visionx
-sudo systemctl start visionx
+```bash
+# copy service file (adjust ExecStart path as needed)
+sudo cp systemd/visionx.service /etc/systemd/system/visionx.service
+
+# reload systemd and enable the service at boot
+sudo systemctl daemon-reload
+sudo systemctl enable visionx.service
+
+# start service now and follow logs
+sudo systemctl start visionx.service
+sudo journalctl -u visionx.service -f
+```
 
 --------------------------------------------------------------------------------
 WHY THIS PROJECT MATTERS

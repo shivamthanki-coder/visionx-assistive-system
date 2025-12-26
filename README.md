@@ -46,7 +46,15 @@ python3 scripts/simulate_esp32.py | python3 -m visionx.visionx_main --mock-seria
 Events are written to the output folder:
 tail -n 5 ~/visionx_out/events.jsonl
 
-``` 
+```
+
+### Tech Stack
+- Python 3.x
+- OpenCV, YOLOv3-tiny
+- Raspberry Pi OS
+- ESP32 (serial JSON)
+- espeak-ng TTS
+
 --------------------------------------------------------------------------------
 KEY FEATURES
 --------------------------------------------------------------------------------
